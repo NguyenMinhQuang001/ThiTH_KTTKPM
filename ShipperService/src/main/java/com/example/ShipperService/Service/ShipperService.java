@@ -1,6 +1,7 @@
 package com.example.ShipperService.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,7 @@ public class ShipperService {
 	
 	@CircuitBreaker(name = "CustomerService", fallbackMethod = "customerBack")
 	@RateLimiter(name = "CustomerService", fallbackMethod = "customerBack")
+	@Cacheable(value = "Shipping", key = "#id")
 	public CustomerOfShipper getCustomerOfShipper(int shipperId) {
 		
 		ShipperOOD ord = shipperRepository.findById(shipperId).get();
