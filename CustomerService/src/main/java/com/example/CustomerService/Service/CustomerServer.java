@@ -19,33 +19,33 @@ public class CustomerServer {
 	private CustomerRepository customerRepository;
 
 //	Câu 2	
-	@Retryable(value = RuntimeException.class, maxAttempts = 3, backoff = @Backoff(delay = 1000))
+//	@Retryable(value = RuntimeException.class, maxAttempts = 3, backoff = @Backoff(delay = 1000))
 	
 //	Câu 3
-	@Cacheable(value = "customer", key = "#id")
+//	@Cacheable(value = "customer", key = "#id")
 	
 	public Customer getCustomerById(int id) {
 		Logger logger = Logger.getLogger(CustomerServer.class.getName());
 		logger.info("lấy dữ liệu từ db");
 
 //		Câu 1
-//		Optional<Customer> customer = customerRepository.findById(id);
+		Optional<Customer> customer = customerRepository.findById(id);
 		
 //		Câu 2		
 //		Optional<Customer> customer = null;
 		
 //		Câu 3
-		Optional<Customer> customer = customerRepository.findById(id);
+//		Optional<Customer> customer = customerRepository.findById(id);
 		
 //		------------------------------------------------------------------------
 
 //		Câu 1
-//		if(customer.isPresent()) {
-//			return customer.get();
-//		}else {
-//			System.out.println("Đang đợi server phản hồi ....");
-//			throw new RuntimeException("Server không phản hồi");
-//		}
+		if(customer.isPresent()) {
+			return customer.get();
+		}else {
+			System.out.println("Đang đợi server phản hồi ....");
+			throw new RuntimeException("Server không phản hồi");
+		}
 
 //		Câu 2
 //		if (customer!=null) {
@@ -56,11 +56,11 @@ public class CustomerServer {
 //		}
 		
 //		Câu 3
-		if(customer.isPresent()) {
-			return customer.get();
-		}else {
-			System.out.println("Đang đợi server phản hồi ....");
-			throw new RuntimeException("Server không phản hồi");
-		}
+//		if(customer.isPresent()) {
+//			return customer.get();
+//		}else {
+//			System.out.println("Đang đợi server phản hồi ....");
+//			throw new RuntimeException("Server không phản hồi");
+//		}
 	}
 }

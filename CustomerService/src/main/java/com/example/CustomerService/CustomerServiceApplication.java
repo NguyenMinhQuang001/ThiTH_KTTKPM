@@ -7,9 +7,9 @@ import org.springframework.retry.annotation.EnableRetry;
 
 @SpringBootApplication
 //Câu 2
-@EnableRetry
+//@EnableRetry
 //Câu 3
-@EnableCaching
+//@EnableCaching
 public class CustomerServiceApplication {
 
 	public static void main(String[] args) {

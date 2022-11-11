@@ -10,15 +10,15 @@ public class Customer implements Serializable{
 	@Id
 	private int customerId;
 	private String name;
-	private double price;
+	private String address;
 	public Customer() {
 		super();
 	}
-	public Customer(int customerId, String name, double price) {
+	public Customer(int customerId, String name, String address) {
 		super();
 		this.customerId = customerId;
 		this.name = name;
-		this.price = price;
+		this.address = address;
 	}
 	public int getCustomerId() {
 		return customerId;
@@ -32,15 +32,15 @@ public class Customer implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public double getPrice() {
-		return price;
+	public String getaddress() {
+		return address;
 	}
-	public void setPrice(double price) {
-		this.price = price;
+	public void setaddress(String address) {
+		this.address = address;
 	}
 	@Override
 	public String toString() {
-		return "Customer [customerId=" + customerId + ", name=" + name + ", price=" + price + "]";
+		return "Customer [customerId=" + customerId + ", name=" + name + ", address=" + address + "]";
 	}
 	
 }
